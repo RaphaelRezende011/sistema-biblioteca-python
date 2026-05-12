@@ -9,7 +9,7 @@ Projeto desenvolvido em Python para gerenciamento de livros em uma biblioteca.
 ## Funcionalidades:
 
 - Cadastro de livros
-- Listagem em tabela
+- Listagem em tabelas
 - Busca por título
 - Remoção de livros
 - Atualização de quantidade
