@@ -1,0 +1,213 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import csv
+from google.colab import files
+
+#definindo a classe livro:
+
+class Livro:
+    def __init__(self, titulo, autor, genero, quantidade):
+        self.titulo = titulo
+        self.autor = autor
+        self.genero = genero
+        self.quantidade = quantidade
+
+#criar a lista de livros:
+
+livros = []
+
+#cadastrar um livro:
+
+def cadastrar_livro():
+    titulo = input('Digite o título: ')
+    autor = input('Digite o autor: ')
+    genero = input('Digite o gênero: ')
+    quantidade = int(input('Digite a quantidade: '))
+
+    livro = Livro(titulo, autor, genero, quantidade)
+
+    livros.append(livro)
+
+    print('Livro cadastrado com sucesso!')
+
+    #função para listar todos os livros:
+
+def listar_livros():
+
+    if not livros:
+        print('Nenhum livro cadastrado.')
+        return
+
+    dados = []
+
+    for livro in livros:
+
+        dados.append({
+            'Título': livro.titulo,
+            'Autor': livro.autor,
+            'Gênero': livro.genero,
+            'Quantidade': livro.quantidade
+        })
+
+    tabela = pd.DataFrame(dados)
+
+    print('\n===== LISTA DE LIVROS =====')
+
+    display(tabela)
+
+
+#BUSCAR UM LIVRO:
+
+def buscar_livro():
+    titulo_busca = input('Digite o título do livro: ')
+
+    for livro in livros:
+        if livro.titulo.lower() == titulo_busca.lower():
+            print('Livro encontrado!')
+            print(f'Título: {livro.titulo}')
+            print(f'Autor: {livro.autor}')
+            print(f'Gênero: {livro.genero}')
+            print(f'Quantidade: {livro.quantidade}')
+            return
+
+    print('Livro não encontrado.')
+
+
+
+#remover um livro:
+
+def remover_livro():
+
+    titulo_remover = input('Digite o título do livro que deseja remover: ')
+
+    for livro in livros:
+
+        if livro.titulo.lower() == titulo_remover.lower():
+
+            livros.remove(livro)
+
+            print('Livro removido com sucesso!')
+
+            return
+
+    print('Livro não encontrado.')
+
+
+    # editar a quantidade de livros:
+
+def editar_quantidade():
+
+    titulo_editar = input('Digite o título do livro: ')
+
+    for livro in livros:
+
+        if livro.titulo.lower() == titulo_editar.lower():
+
+            nova_quantidade = int(input('Digite a nova quantidade: '))
+
+            livro.quantidade = nova_quantidade
+
+            print('Quantidade atualizada com sucesso!')
+
+            return
+
+    print('Livro não encontrado.')
+
+
+
+#Gerar o grafico de quantidade de livros por genero
+
+def grafico_generos():
+
+    dados_generos = {}
+
+    for livro in livros:
+
+        if livro.genero in dados_generos:
+            dados_generos[livro.genero] += livro.quantidade
+
+        else:
+            dados_generos[livro.genero] = livro.quantidade
+
+    generos = list(dados_generos.keys())
+    quantidades = list(dados_generos.values())
+
+    plt.bar(generos, quantidades)
+
+    plt.title('Quantidade de Livros por Gênero')
+    plt.xlabel('Gêneros')
+    plt.ylabel('Quantidade (Em unidades)')
+
+    plt.show()
+
+
+
+#exportar os dados para arquivo csv:
+
+def exportar_csv():
+
+    with open('livros.csv', mode='w', newline='', encoding='utf-8') as arquivo:
+
+        escritor = csv.writer(arquivo)
+
+        escritor.writerow(['Título', 'Autor', 'Gênero', 'Quantidade'])
+
+        for livro in livros:
+
+            escritor.writerow([
+                livro.titulo,
+                livro.autor,
+                livro.genero,
+                livro.quantidade
+            ])
+
+    print('Dados exportados para livros.csv com sucesso!')
+
+    files.download('livros.csv')
+
+
+
+    #sistema de biblioteca:
+
+while True:
+
+    print('\n===== SISTEMA DE BIBLIOTECA =====')
+
+    print('1 - Cadastrar livro')
+    print('2 - Listar livros')
+    print('3 - Buscar livro')
+    print('4 - Gerar gráfico')
+    print('5 - Remover livro')
+    print('6 - Editar quantidade')
+    print('7 - Exportar dados CSV')
+    print('8 - Sair') 
+
+    opcao = input('Escolha uma opção: ')
+
+    if opcao == '1':
+        cadastrar_livro()
+
+    elif opcao == '2':
+        listar_livros()
+
+    elif opcao == '3':
+        buscar_livro()
+
+    elif opcao == '4':
+        grafico_generos()
+
+    elif opcao == '5':
+        remover_livro()
+
+    elif opcao == '6':
+        editar_quantidade()
+    
+    elif opcao == '7':
+          exportar_csv()
+
+    elif opcao == '8':
+        print('Sistema encerrado.')
+        break
+
+    else:
+        print('Opção inválida.')
