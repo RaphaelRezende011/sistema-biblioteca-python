@@ -31,19 +31,6 @@ Projeto acadêmico criado para praticar:
 - Visualização de dados
 - Manipulação de arquivos
 
-## Como executar
-
-1. Instale as bibliotecas:
-
-```bash
-pip install pandas matplotlib
-```
-
-2. Execute o arquivo principal:
-
-```bash
-python main.py
-```
 
 ## Melhorias futuras
 
