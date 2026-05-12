@@ -16,7 +16,7 @@ Projeto desenvolvido em Python para gerenciamento de livros em uma biblioteca.
 - Geração de gráfico por gênero
 - Exportação de dados CSV
 
-## Tecnologias Utilizadas:
+## Técnologias Utilizadas:
 
 - Python
 - Pandas
