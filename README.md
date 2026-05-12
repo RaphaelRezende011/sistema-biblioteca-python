@@ -2,11 +2,11 @@
 
 Sistema de gerenciamento de livros em Python com menu interativo, gráfico e exportação CSV.
 
-# Sistema de Gerenciamento de Livros
+# Sistema de Gerenciamento de Livros:
 
 Projeto desenvolvido em Python para gerenciamento de livros em uma biblioteca.
 
-## Funcionalidades
+## Funcionalidades:
 
 - Cadastro de livros
 - Listagem em tabela
@@ -16,13 +16,13 @@ Projeto desenvolvido em Python para gerenciamento de livros em uma biblioteca.
 - Geração de gráfico por gênero
 - Exportação de dados CSV
 
-## Tecnologias utilizadas
+## Tecnologias Utilizadas:
 
 - Python
 - Pandas
 - Matplotlib
 
-## Objetivo do projeto
+## Objetivo do projeto:
 
 Projeto acadêmico criado para praticar:
 - Programação Orientada a Objetos (POO)
@@ -32,7 +32,7 @@ Projeto acadêmico criado para praticar:
 - Manipulação de arquivos
 
 
-## Melhorias futuras
+## Melhorias futuras:
 
 - Interface gráfica
 - Banco de dados SQLite
